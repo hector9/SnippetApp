@@ -20,6 +20,12 @@ class Snippets extends CI_Controller {
 	 */
 	public function index()
 	{
+            $this->load->model('model_Lenguaje', 'lenguaje');
+            
+            $lenguajes = $this->lenguaje->GetLenguajes();
+            
+            var_dump($lenguajes);
+            
 		$this->load->view('template/production/testTemplate');
 	}
 }

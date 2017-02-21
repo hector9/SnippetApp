@@ -24,13 +24,13 @@ class model_Lenguaje extends CI_Model {
     public function GetLenguaje($Id)
     {
         $query = $this->db->query("SELECT * FROM Lenguaje  WHERE Id = '"+$Id+"' ;");
-        return $query->result_array();
+        return $query->row();
     }
     
-    public function GetLenguajes($Id)
+    public function GetLenguajes()
     {
         $query = $this->db->query("SELECT * FROM Lenguaje ");
-        return $query->row();
+        return $query->result_array();
     }
     /**
      * 
