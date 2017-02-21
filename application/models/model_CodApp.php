@@ -1,27 +1,35 @@
 <?php
 
-class model_Lenguaje extends CI_Model {
+/**
+ * Modelo de nuestra tienda el cual interactuara con la base de datos
+ * tienda_online , sera el encargado de todas las operaciones con ella.
+ */
+class model_CodApp extends CI_Model {
 
     public function __construct() {
         parent::__construct();
         $this->load->database();
     }
 
-    public function NewLenguaje($datos) {
+    /**
+     *
+     * @return array de categorias, devuelve toda las categorias existentes
+     */
+    public function NewCodApp($datos) {
 
-        $this->db->insert('Lenguaje', $datos);
+        $this->db->insert('codigo_por_app', $datos);
         return $this->db->insert_id();
     }
     
-    public function GetLenguaje($Id)
+    public function GetCodApp($Id)
     {
-        $query = $this->db->query("SELECT * FROM Lenguaje  WHERE Id = '"+$Id+"' ;");
+        $query = $this->db->query("SELECT * FROM codigo_por_app  WHERE Id = '"+$Id+"' ;");
         return $query->row();
     }
     
-    public function GetLenguajes()
+    public function GetCodApps()
     {
-        $query = $this->db->query("SELECT * FROM Lenguaje ");
+        $query = $this->db->query("SELECT * FROM codigo_por_app ");
         return $query->result_array();
     }
     /**

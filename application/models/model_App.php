@@ -1,27 +1,35 @@
 <?php
 
-class model_Lenguaje extends CI_Model {
+/**
+ * Modelo de nuestra tienda el cual interactuara con la base de datos
+ * tienda_online , sera el encargado de todas las operaciones con ella.
+ */
+class model_App extends CI_Model {
 
     public function __construct() {
         parent::__construct();
         $this->load->database();
     }
 
-    public function NewLenguaje($datos) {
+    /**
+     *
+     * @return array de categorias, devuelve toda las categorias existentes
+     */
+    public function NewApp($datos) {
 
-        $this->db->insert('Lenguaje', $datos);
+        $this->db->insert('App', $datos);
         return $this->db->insert_id();
     }
     
-    public function GetLenguaje($Id)
+    public function GetApp($Id)
     {
-        $query = $this->db->query("SELECT * FROM Lenguaje  WHERE Id = '"+$Id+"' ;");
+        $query = $this->db->query("SELECT * FROM App  WHERE Id = '"+$Id+"' ;");
         return $query->row();
     }
     
-    public function GetLenguajes()
+    public function GetApps()
     {
-        $query = $this->db->query("SELECT * FROM Lenguaje ");
+        $query = $this->db->query("SELECT * FROM App ");
         return $query->result_array();
     }
     /**
@@ -30,10 +38,10 @@ class model_Lenguaje extends CI_Model {
      * ejemplo :
      * <?php echo form_label('Nombre: &nbsp;  '), form_dropdown('Id', $array); ?>
      */
-    public function LenguajesCombo() 
+    public function AppsCombo() 
     {
       // armamos la consulta
-      $query = $this->db->query('SELECT Id,Nombre FROM Lenguajes ORDER BY Nombre');
+      $query = $this->db->query('SELECT Id,Nombre FROM Apps ORDER BY Nombre');
 
       // si hay resultados
       if ($query->num_rows() > 0) {
