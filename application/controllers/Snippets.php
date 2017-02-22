@@ -51,7 +51,9 @@ class Snippets extends CI_Controller {
 //            $idCodigo = AddCodigo($datosCodigo);
 //            $datosRelacion = [$idCodigo, $datos['app']];
 //            $id = AddCodApp($datosRelacion);
-            $snippet = urlencode($_POST['textarea']);
+              
+            $snippet = $_POST['textarea'];
+             
             $nuevoSnippet = Array(
                 'Id_Lenguaje' => $_POST['lenguaje'],
                 'Valor' => $snippet,
