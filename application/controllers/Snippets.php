@@ -92,10 +92,23 @@ class Snippets extends CI_Controller {
         }
         
         public function SnippetsByLng($idLng) {
+             /**/
+            $this->datos['lenguajes'] = $this->lenguajeModel->GetLenguajes();
+            $this->datos['apps'] = $this->appModel->GetApps();
+            $this->datos['lenguajesCombo'] = $this->lenguajeModel->LenguajesCombo();
+            $this->datos['appsCombo'] = $this->appModel->AppsCombo();
+
+            $this->datos['snippets'] = $this->snippetModel->GetCodigoByLenguaje($idLng);
             
         }
-        
-        public function SnippetByApp($idApp) {
+        /**/
+        public function SnippetsByApp($idApp) {
+            $this->datos['lenguajes'] = $this->lenguajeModel->GetLenguajes();
+            $this->datos['apps'] = $this->appModel->GetApps();
+            $this->datos['lenguajesCombo'] = $this->lenguajeModel->LenguajesCombo();
+            $this->datos['appsCombo'] = $this->appModel->AppsCombo();
+
+            $this->datos['snippets'] = $this->snippetModel->GetCodigoByApp($idApp);
             
         }
 }
