@@ -101,7 +101,7 @@ class Snippets extends CI_Controller {
             
             $this->load->view('snippets/listaSnippets', $this->datos);
         }
-        
+        /**/
         public function SnippetsByApp($idApp) {
             $this->datos['lenguajes'] = $this->lenguajeModel->GetLenguajes();
             $this->datos['apps'] = $this->appModel->GetApps();

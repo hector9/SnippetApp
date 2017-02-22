@@ -22,7 +22,7 @@ class model_Lenguaje extends CI_Model {
     
     public function GetLenguaje($Id)
     {
-        $query = $this->db->query("SELECT * FROM Lenguaje  WHERE Id = '"+$Id+"' ;");
+        $query = $this->db->query("SELECT * FROM Lenguaje  WHERE Id = '" .$Id. "' ;");
         return $query->row();
     }
     

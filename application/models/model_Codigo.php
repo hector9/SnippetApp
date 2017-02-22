@@ -58,7 +58,7 @@ class model_Codigo extends CI_Model {
     public function GetCodigo($Id) {
         try
         {
-            $query = $this->db->query("SELECT * FROM Codigo  WHERE Id = '" + $Id + "' ;");
+            $query = $this->db->query("SELECT * FROM Codigo  WHERE Id = '" . $Id . "' ;");
             return $query->row();
         } 
         catch (Exception $ex) 
@@ -68,8 +68,11 @@ class model_Codigo extends CI_Model {
     }
     public function GetCodigoByLenguaje($Leng) {
         try
-        {
-            $query = $this->db->query("SELECT * FROM Codigo  WHERE Id_Lenguaje = '" + $Leng + "' ;");
+        {   
+            $cadena ="SELECT * FROM Codigo  WHERE Id_Lenguaje = " . parse_str($Leng) . " ;";
+        echo ($cadena);
+            $query = $this->db->query("SELECT * FROM Codigo  WHERE Id_Lenguaje = " . $Leng . " ;");
+            
             return $query->result_array();
         } 
         catch (Exception $ex) 
@@ -80,7 +83,7 @@ class model_Codigo extends CI_Model {
     public function GetCodigoByApp($app) {
         try
         {
-            $query = $this->db->query("SELECT * FROM Codigo,Codigo_por_app  WHERE Codigo.Id = Codigo_por_app.Id_Codigo AND Id_app = '" + $app + "' ;");
+            $query = $this->db->query("SELECT * FROM Codigo,Codigo_por_app  WHERE Codigo.Id = Codigo_por_app.Id_Codigo AND Id_app = '" . $app ."' ;");
             return $query->result_array();
         } 
         catch (Exception $ex) 
@@ -95,7 +98,7 @@ class model_Codigo extends CI_Model {
     }
 
     public function GetCodigosByDescripcion($key) {
-        $query = $this->db->query("SELECT * FROM Codigo WHERE Descripcion LIKE %" + $key + "% ;");
+        $query = $this->db->query("SELECT * FROM Codigo WHERE Descripcion LIKE %" . $key . "% ;");
         return $query->result_array();
     }
 

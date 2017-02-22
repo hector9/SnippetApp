@@ -29,7 +29,7 @@ class model_App extends CI_Model {
     
     public function GetApp($Id)
     {
-        $query = $this->db->query("SELECT * FROM App  WHERE Id = '"+$Id+"' ;");
+        $query = $this->db->query("SELECT * FROM App  WHERE Id = '". $Id. "' ;");
         return $query->row();
     }
     
