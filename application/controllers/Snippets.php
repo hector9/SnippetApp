@@ -52,8 +52,10 @@ class Snippets extends CI_Controller {
 //            $datosRelacion = [$idCodigo, $datos['app']];
 //            $id = AddCodApp($datosRelacion);
               
-            $snippet = $_POST['textarea'];
+            $text = $_POST['textarea'];
              
+            $snippet = str_replace("<", "&lt;", $text);
+            
             $nuevoSnippet = Array(
                 'Id_Lenguaje' => $_POST['lenguaje'],
                 'Valor' => $snippet,
@@ -64,13 +66,14 @@ class Snippets extends CI_Controller {
             if($this->snippetModel->NewCodigo($nuevoSnippet))
             {
                 echo 'Guardado Correctamente';
+                $this->datos['snippets'] = $this->snippetModel->GetCodigoByApp($_POST['app']);
+                $this->load->view('snippets/listaSnippets', $this->datos);
             }
             else
             {
                 echo 'Error al guardar';
+                $this->load->view('snippets/addSnippet', $this->datos);
             }
-            
-            $this->load->view('snippets/addSnippet', $this->datos);
 	}
         
         public function EditSnippet($id) {
