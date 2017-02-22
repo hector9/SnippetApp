@@ -66,6 +66,17 @@ class model_Codigo extends CI_Model {
             return false;
         }
     }
+    public function GetCodigoByLenguaje($Leng) {
+        try
+        {
+            $query = $this->db->query("SELECT * FROM Codigo  WHERE Id_Lenguaje = '" + $Leng + "' ;");
+            return $query->row();
+        } 
+        catch (Exception $ex) 
+        {
+            return false;
+        }
+    }
     public function GetCodigoByApp($app) {
         try
         {
@@ -77,7 +88,7 @@ class model_Codigo extends CI_Model {
             return false;
         }
     }
-
+    
     public function GetCodigos() {
         $query = $this->db->query("SELECT * FROM Codigos ");
         return $query->result_array();
