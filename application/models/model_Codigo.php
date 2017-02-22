@@ -70,7 +70,7 @@ class model_Codigo extends CI_Model {
         try
         {
             $query = $this->db->query("SELECT * FROM Codigo  WHERE Id_Lenguaje = '" + $Leng + "' ;");
-            return $query->row();
+            return $query->result_array();
         } 
         catch (Exception $ex) 
         {
@@ -80,8 +80,8 @@ class model_Codigo extends CI_Model {
     public function GetCodigoByApp($app) {
         try
         {
-            $query = $this->db->query("SELECT * FROM Codigo,Codigo_por_app  WHERE Codigo.Id = Codigo_por_app.Id_Codigo AND  Id_app = '" + $app + "' ;");
-            return $query->row();
+            $query = $this->db->query("SELECT * FROM Codigo,Codigo_por_app  WHERE Codigo.Id = Codigo_por_app.Id_Codigo AND Id_app = '" + $app + "' ;");
+            return $query->result_array();
         } 
         catch (Exception $ex) 
         {
