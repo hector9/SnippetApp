@@ -66,6 +66,17 @@ class model_Codigo extends CI_Model {
             return false;
         }
     }
+    public function GetCodigoByApp($app) {
+        try
+        {
+            $query = $this->db->query("SELECT * FROM Codigo,Codigo_por_app  WHERE Codigo.Id = Codigo_por_app.Id_Codigo AND  Id_app = '" + $app + "' ;");
+            return $query->row();
+        } 
+        catch (Exception $ex) 
+        {
+            return false;
+        }
+    }
 
     public function GetCodigos() {
         $query = $this->db->query("SELECT * FROM Codigos ");
