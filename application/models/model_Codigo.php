@@ -10,9 +10,17 @@ class model_Codigo extends CI_Model {
     public function NewCodigo($datos) {
         try 
         {
-            $datosCodigo = [$datos['Id_Lenguaje'], $datos['Valor'], $datos['Descripcion']];
+            $datosCodigo = Array( 
+                'Valor' => $datos['Valor'],
+                'Descripcion' => $datos['Descripcion'],
+                'Id_Lenguaje' => $datos['Id_Lenguaje']);
+            
+            //var_dump($datosCodigo);
             $idCodigo = $this->AddCodigo($datosCodigo);
-            $datosRelacion = [$idCodigo, $datos['app']];
+            $datosRelacion = Array(
+                'Id_codigo'=>$idCodigo, 
+                'Id_app'=>$datos['app']);
+            //var_dump($datosRelacion);
             $id = $this->AddCodApp($datosRelacion);
             
             return true;
