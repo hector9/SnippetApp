@@ -90,7 +90,7 @@ class model_Codigo extends CI_Model {
     }
     
     public function GetCodigos() {
-        $query = $this->db->query("SELECT * FROM Codigos ");
+        $query = $this->db->query("SELECT * FROM Codigo ");
         return $query->result_array();
     }
 

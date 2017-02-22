@@ -37,7 +37,7 @@ class Snippets extends CI_Controller {
             $this->datos['lenguajesCombo'] = $this->lenguajeModel->LenguajesCombo();
             $this->datos['appsCombo'] = $this->appModel->AppsCombo();
 
-            $this->load->view('template/production/testTemplate', $this->datos);
+            $this->load->view('snippets/addSnippet', $this->datos);
 	}
         
         public function AddSnippet()
@@ -70,6 +70,32 @@ class Snippets extends CI_Controller {
                 echo 'Error al guardar';
             }
             
-            //$this->load->view('template/production/testTemplate', $this->datos);
+            $this->load->view('snippets/addSnippet', $this->datos);
 	}
+        
+        public function EditSnippet($id) {
+            $this->datos['lenguajes'] = $this->lenguajeModel->GetLenguajes();
+            $this->datos['apps'] = $this->appModel->GetApps();
+            $this->datos['lenguajesCombo'] = $this->lenguajeModel->LenguajesCombo();
+            $this->datos['appsCombo'] = $this->appModel->AppsCombo();
+            
+            $this->load->view('snippets/addSnippet', $this->datos);
+        }
+        
+        public function DeleteSnippet($id) {
+            $this->datos['lenguajes'] = $this->lenguajeModel->GetLenguajes();
+            $this->datos['apps'] = $this->appModel->GetApps();
+            $this->datos['lenguajesCombo'] = $this->lenguajeModel->LenguajesCombo();
+            $this->datos['appsCombo'] = $this->appModel->AppsCombo();
+            
+            $this->load->view('snippets/addSnippet', $this->datos);
+        }
+        
+        public function SnippetsByLng($idLng) {
+            
+        }
+        
+        public function SnippetByApp($idApp) {
+            
+        }
 }
