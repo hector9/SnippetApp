@@ -100,6 +100,7 @@ class Snippets extends CI_Controller {
 
             $this->datos['snippets'] = $this->snippetModel->GetCodigoByLenguaje($idLng);
             
+            $this->load->view('snippets/listasnippets', $this->datos);
         }
         /**/
         public function SnippetsByApp($idApp) {
@@ -110,5 +111,6 @@ class Snippets extends CI_Controller {
 
             $this->datos['snippets'] = $this->snippetModel->GetCodigoByApp($idApp);
             
+            $this->load->view('snippets/listasnippets', $this->datos);
         }
 }

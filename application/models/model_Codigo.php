@@ -70,7 +70,7 @@ class model_Codigo extends CI_Model {
         try
         {   
             $cadena ="SELECT * FROM Codigo  WHERE Id_Lenguaje = " . parse_str($Leng) . " ;";
-        echo ($cadena);
+
             $query = $this->db->query("SELECT * FROM Codigo  WHERE Id_Lenguaje = " . $Leng . " ;");
             
             return $query->result_array();
