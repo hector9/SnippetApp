@@ -92,6 +92,7 @@ class Snippets extends CI_Controller {
         }
         
         public function SnippetsByLng($idLng) {
+             /**/
             $this->datos['lenguajes'] = $this->lenguajeModel->GetLenguajes();
             $this->datos['apps'] = $this->appModel->GetApps();
             $this->datos['lenguajesCombo'] = $this->lenguajeModel->LenguajesCombo();
