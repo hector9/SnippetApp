@@ -17,15 +17,57 @@ class Snippets extends CI_Controller {
 	 * So any other public methods not prefixed with an underscore will
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
+         * 
 	 */
-	public function index()
+    
+        function __construct() {
+            parent::__construct();
+            
+            $this->load->model('model_App', 'appModel');
+            $this->load->model('model_Lenguaje', 'lenguajeModel');
+            $this->load->model('model_Codigo', 'snippetModel');
+
+        }
+
+
+        public function index()
 	{
-            $this->load->model('model_Lenguaje', 'lenguaje');
+            $this->datos['lenguajes'] = $this->lenguajeModel->GetLenguajes();
+            $this->datos['apps'] = $this->appModel->GetApps();
+            $this->datos['lenguajesCombo'] = $this->lenguajeModel->LenguajesCombo();
+            $this->datos['appsCombo'] = $this->appModel->AppsCombo();
+
+            $this->load->view('template/production/testTemplate', $this->datos);
+	}
+        
+        public function AddSnippet()
+	{
+            $this->datos['lenguajes'] = $this->lenguajeModel->GetLenguajes();
+            $this->datos['apps'] = $this->appModel->GetApps();
+            $this->datos['lenguajesCombo'] = $this->lenguajeModel->LenguajesCombo();
+            $this->datos['appsCombo'] = $this->appModel->AppsCombo();
+
+//            $datosCodigo = [$datos['Id_Lenguaje'], $datos['Valor'], $datos['Descripcion']];
+//            $idCodigo = AddCodigo($datosCodigo);
+//            $datosRelacion = [$idCodigo, $datos['app']];
+//            $id = AddCodApp($datosRelacion);
+            $snippet = urlencode($_POST['textarea']);
+            $nuevoSnippet = Array(
+                'Id_Lenguaje' => $_POST['lenguaje'],
+                'Valor' => $snippet,
+                'Descripcion' => $_POST['descripcion'],
+                'app' => $_POST['app']
+            );
             
-            $lenguajes = $this->lenguaje->GetLenguajes();
+            if($this->snippetModel->NewCodigo($nuevoSnippet))
+            {
+                echo 'Guardado Correctamente';
+            }
+            else
+            {
+                echo 'Error al guardar';
+            }
             
-            var_dump($lenguajes);
-            
-		$this->load->view('template/production/testTemplate');
+            //$this->load->view('template/production/testTemplate', $this->datos);
 	}
 }

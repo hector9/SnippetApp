@@ -55,7 +55,7 @@ class model_Lenguaje extends CI_Model {
     public function LenguajesCombo() 
     {
       // armamos la consulta
-      $query = $this->db->query('SELECT Id,Nombre FROM Lenguajes ORDER BY Nombre');
+      $query = $this->db->query('SELECT Id,Nombre FROM Lenguaje ORDER BY Nombre');
       return $query->result_array();
     }
     

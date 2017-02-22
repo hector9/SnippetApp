@@ -27,7 +27,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
+              <a href="index.html" class="site_title"><i class="fa fa-quote-left"></i>  <span>Snippet App!</span> <i class="fa fa-quote-right"></i></a>
             </div>
 
             <div class="clearfix"></div>
@@ -35,11 +35,11 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="<?=  base_url()?>assets/production/images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src="<?=  base_url()?>assets/production/images/codeQuotes.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>John Doe</h2>
+                <h2>SnippetApp</h2>
               </div>
               <div class="clearfix"></div>
             </div>
@@ -52,99 +52,32 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-home"></i> Lenguajes <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="index.html">Dashboard</a></li>
-                      <li><a href="index2.html">Dashboard2</a></li>
-                      <li><a href="index3.html">Dashboard3</a></li>
+                        <?php 
+                            
+                            foreach($lenguajes as $lenguaje)
+                            {
+                                echo '<li><a href="index.html">'. $lenguaje['Nombre'] .'</a></li>';
+                            }
+                        
+                        ?>
+
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-edit"></i> Aplicaciones <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="form.html">General Form</a></li>
-                      <li><a href="form_advanced.html">Advanced Components</a></li>
-                      <li><a href="form_validation.html">Form Validation</a></li>
-                      <li><a href="form_wizards.html">Form Wizard</a></li>
-                      <li><a href="form_upload.html">Form Upload</a></li>
-                      <li><a href="form_buttons.html">Form Buttons</a></li>
+                       <?php 
+                            
+                            foreach($apps as $app)
+                            {
+                                echo '<li><a href="index.html">'. $app['Nombre'] .'</a></li>';
+                            }
+                        
+                        ?>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-desktop"></i> UI Elements <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="general_elements.html">General Elements</a></li>
-                      <li><a href="media_gallery.html">Media Gallery</a></li>
-                      <li><a href="typography.html">Typography</a></li>
-                      <li><a href="icons.html">Icons</a></li>
-                      <li><a href="glyphicons.html">Glyphicons</a></li>
-                      <li><a href="widgets.html">Widgets</a></li>
-                      <li><a href="invoice.html">Invoice</a></li>
-                      <li><a href="inbox.html">Inbox</a></li>
-                      <li><a href="calendar.html">Calendar</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-table"></i> Tables <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="tables.html">Tables</a></li>
-                      <li><a href="tables_dynamic.html">Table Dynamic</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-bar-chart-o"></i> Data Presentation <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="chartjs.html">Chart JS</a></li>
-                      <li><a href="chartjs2.html">Chart JS2</a></li>
-                      <li><a href="morisjs.html">Moris JS</a></li>
-                      <li><a href="echarts.html">ECharts</a></li>
-                      <li><a href="other_charts.html">Other Charts</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-clone"></i>Layouts <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
-                      <li><a href="fixed_footer.html">Fixed Footer</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </div>
-              <div class="menu_section">
-                <h3>Live On</h3>
-                <ul class="nav side-menu">
-                  <li><a><i class="fa fa-bug"></i> Additional Pages <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="e_commerce.html">E-commerce</a></li>
-                      <li><a href="projects.html">Projects</a></li>
-                      <li><a href="project_detail.html">Project Detail</a></li>
-                      <li><a href="contacts.html">Contacts</a></li>
-                      <li><a href="profile.html">Profile</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-windows"></i> Extras <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="page_403.html">403 Error</a></li>
-                      <li><a href="page_404.html">404 Error</a></li>
-                      <li><a href="page_500.html">500 Error</a></li>
-                      <li><a href="plain_page.html">Plain Page</a></li>
-                      <li><a href="login.html">Login Page</a></li>
-                      <li><a href="pricing_tables.html">Pricing Tables</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-sitemap"></i> Multilevel Menu <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                        <li><a href="#level1_1">Level One</a>
-                        <li><a>Level One<span class="fa fa-chevron-down"></span></a>
-                          <ul class="nav child_menu">
-                            <li class="sub_menu"><a href="level2.html">Level Two</a>
-                            </li>
-                            <li><a href="#level2_1">Level Two</a>
-                            </li>
-                            <li><a href="#level2_2">Level Two</a>
-                            </li>
-                          </ul>
-                        </li>
-                        <li><a href="#level1_2">Level One</a>
-                        </li>
-                    </ul>
-                  </li>                  
-                  <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a></li>
+                  
                 </ul>
               </div>
 
@@ -178,7 +111,7 @@
                 <a id="menu_toggle"><i class="fa fa-bars"></i></a>
               </div>
 
-              <ul class="nav navbar-nav navbar-right">
+<!--              <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                     <img src="images/img.jpg" alt="">John Doe
@@ -261,7 +194,7 @@
                     </li>
                   </ul>
                 </li>
-              </ul>
+              </ul>-->
             </nav>
           </div>
         </div>
@@ -272,7 +205,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Plain Page</h3>
+                <h3>Snippets</h3>
               </div>
 
               <div class="title_right">
@@ -293,7 +226,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Plain Page</h2>
+                    <h2>Filters</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -312,7 +245,70 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                      Add content to the page ...
+                      <form class="form-horizontal form-label-left" action="<?= base_url() ?>index.php/Snippets/AddSnippet" method="post">
+                          
+                      <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Lenguaje </label>
+                        <div class="col-md-3 col-sm-10 col-xs-12">
+                            <select class="select2_group form-control" name="lenguaje">
+                              
+                            <?php
+                                                    
+                                foreach ($lenguajesCombo as $lenguaje)
+                                {
+                                    echo '<option value="'. $lenguaje['Id'] .'">'. $lenguaje['Nombre'] .'</option>';
+                                }
+                            ?>
+                            </select>
+                          <!--<input type="text" class="form-control" disabled="disabled" placeholder="Disabled Input">-->
+                        </div>
+                        
+                        <!-- Div para generar un espacio entre los combos en pantallas SM's y que no afecte a pantallas MD's -->
+                        <div class="col-md-3 col-sm-12"></div>
+                        
+                        <label class="control-label col-md-1 col-sm-2 col-xs-12">Aplicación </label>
+                        <div class="col-md-3 col-sm-10 col-xs-12">
+                            <select class="select2_group form-control" name="app">
+                              
+                            <?php
+                                                    
+                                foreach ($appsCombo as $app)
+                                {
+                                    echo '<option value="'. $app['Id'] .'">'. $app['Nombre'] .'</option>';
+                                }
+                            ?>
+                            </select>
+                          <!--<input type="text" class="form-control" disabled="disabled" placeholder="Disabled Input">-->
+                        </div>
+                      </div>
+                          
+                      <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Descripción </label>
+                        <div class="col-md-10 col-sm-10 col-xs-12">
+                            <input type="text" class="form-control" name="descripcion" placeholder="Introduce la descripción...">
+                        </div>
+                      </div>
+                      
+                      <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Snippet <span class="required">*</span>
+                        </label>
+                        <div class="col-md-10 col-sm-10 col-xs-12">
+                            <textarea class="form-control" name="textarea" rows="18" placeholder='Introduce tu Snippet aquí...' required="true"></textarea>
+                        </div>
+                      </div>                  
+
+                      
+                      <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+                          <!--<button type="button" class="btn btn-primary">Cancel</button>-->
+                          <button type="reset" class="btn btn-primary">Reset</button>
+                          <button type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                      </div>
+
+                    </form>
+                      
                   </div>
                 </div>
               </div>
@@ -343,5 +339,21 @@
     
     <!-- Custom Theme Scripts -->
     <script src="<?=  base_url()?>assets/build/js/custom.min.js"></script>
+    
+    <!-- Script para habilitar la tabulación en los textareas con tagName textarea -->
+    <script>
+        var textareas = document.getElementsByTagName('textarea');
+        var count = textareas.length;
+        for(var i=0;i<count;i++){
+            textareas[i].onkeydown = function(e){
+                if(e.keyCode==9 || e.which==9){
+                    e.preventDefault();
+                    var s = this.selectionStart;
+                    this.value = this.value.substring(0,this.selectionStart) + "\t" + this.value.substring(this.selectionEnd);
+                    this.selectionEnd = s+1; 
+                }
+            }
+        }
+    </script>
   </body>
 </html>

@@ -61,7 +61,7 @@ class model_App extends CI_Model {
 //    }
     public function AppsCombo() 
     {
-        $query = $this->db->query('SELECT Id,Nombre FROM Apps ORDER BY Nombre');
+        $query = $this->db->query('SELECT Id,Nombre FROM App ORDER BY Nombre');
         return $query->result_array();
     }
 

@@ -11,9 +11,9 @@ class model_Codigo extends CI_Model {
         try 
         {
             $datosCodigo = [$datos['Id_Lenguaje'], $datos['Valor'], $datos['Descripcion']];
-            $idCodigo = AddCodigo($datosCodigo);
+            $idCodigo = $this->AddCodigo($datosCodigo);
             $datosRelacion = [$idCodigo, $datos['app']];
-            $id = AddCodApp($datosRelacion);
+            $id = $this->AddCodApp($datosRelacion);
             
             return true;
             
@@ -26,7 +26,7 @@ class model_Codigo extends CI_Model {
     public function AddCodigo($datos) {
         try
         {
-            $this->db->insert('Codigo', $datos);
+            $this->db->insert('codigo', $datos);
             return $this->db->insert_id();
         }
         catch (Exception $e)
