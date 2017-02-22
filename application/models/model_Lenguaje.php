@@ -37,20 +37,26 @@ class model_Lenguaje extends CI_Model {
      * ejemplo :
      * <?php echo form_label('Nombre: &nbsp;  '), form_dropdown('Id', $array); ?>
      */
+//    public function LenguajesCombo() 
+//    {
+//      // armamos la consulta
+//      $query = $this->db->query('SELECT Id,Nombre FROM Lenguajes ORDER BY Nombre');
+//
+//      // si hay resultados
+//      if ($query->num_rows() > 0) {
+//          // almacenamos en una matriz bidimensional
+//          foreach ($query->result() as $row)
+//              $arrDatos[htmlspecialchars($row->Id, ENT_QUOTES)] = htmlspecialchars($row->Nombre, ENT_QUOTES);
+//
+//          $query->free_result();
+//          return $arrDatos;
+//      }
+//    }
     public function LenguajesCombo() 
     {
       // armamos la consulta
       $query = $this->db->query('SELECT Id,Nombre FROM Lenguajes ORDER BY Nombre');
-
-      // si hay resultados
-      if ($query->num_rows() > 0) {
-          // almacenamos en una matriz bidimensional
-          foreach ($query->result() as $row)
-              $arrDatos[htmlspecialchars($row->Id, ENT_QUOTES)] = htmlspecialchars($row->Nombre, ENT_QUOTES);
-
-          $query->free_result();
-          return $arrDatos;
-      }
+      return $query->result_array();
     }
     
 
