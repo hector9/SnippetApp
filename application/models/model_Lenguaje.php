@@ -8,9 +8,16 @@ class model_Lenguaje extends CI_Model {
     }
 
     public function NewLenguaje($datos) {
-
-        $this->db->insert('Lenguaje', $datos);
-        return $this->db->insert_id();
+        
+        try
+        {
+            $this->db->insert('Lenguaje', $datos);
+            return $this->db->insert_id();
+        } 
+        catch (Exception $ex) 
+        {
+            return false;
+        }
     }
     
     public function GetLenguaje($Id)

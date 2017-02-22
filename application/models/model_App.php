@@ -16,9 +16,15 @@ class model_App extends CI_Model {
      * @return array de categorias, devuelve toda las categorias existentes
      */
     public function NewApp($datos) {
-
-        $this->db->insert('App', $datos);
-        return $this->db->insert_id();
+        try 
+        {
+            $this->db->insert('App', $datos);
+            return $this->db->insert_id();
+        } catch (Exception $ex) 
+        {
+            return false;
+        }
+        
     }
     
     public function GetApp($Id)
