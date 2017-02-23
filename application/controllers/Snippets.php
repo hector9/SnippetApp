@@ -136,6 +136,19 @@ class Snippets extends CI_Controller {
             $this->load->view('common/footer');
         }
         
+        public function SnippetById($idSnippet) {
+            $this->datos['lenguajes'] = $this->lenguajeModel->GetLenguajes();
+            $this->datos['apps'] = $this->appModel->GetApps();
+            $this->datos['lenguajesCombo'] = $this->lenguajeModel->LenguajesCombo();
+            $this->datos['appsCombo'] = $this->appModel->AppsCombo();
+
+            $this->datos['snippets'] = $this->snippetModel->GetCodigo($idSnippet);
+            
+            $this->load->view('common/header', $this->datos);
+            $this->load->view('snippets/listasnippets', $this->datos);
+            $this->load->view('common/footer');
+        }
+        
         public function GetSnippets($texto) {
 
             header('Content-Type: application/json');

@@ -14,10 +14,14 @@
                     <span class="input-group-btn">
                       <button class="btn btn-default" type="button">Go!</button>
                     </span>
-                    <div id="respuestaBuscador">
-                        
-                    </div>
+                    
                   </div>
+                    <!-- Div flotante de buscador -->
+                    <div id="respuestaBuscador" style="width:215;height:80px;background:silver; overflow-y: scroll; position: absolute; z-index: 100; visibility: hidden;-khtml-border-radius: 5px;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;"></div>
+                
                 </div>
               </div>
             </div>
@@ -47,6 +51,7 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
+                      
                       <?php
                         foreach($snippets as $snippet)
                         {
@@ -113,25 +118,38 @@
             
             var snippet = document.getElementById('buscador').value;
             
-            $.ajax({
-                data: {
-                        //snippet: snippet
-                    },
-                url: "http://localhost/SnippetApp/index.php/Snippets/GetSnippets/"+ snippet,
-                type: "POST",
-                success: function(result){
-                    //$("#respuesta").html(result);
-                    console.log(result);
-//                    if(result == "1")
-//                    {
-//                        //$("#addModal").modal('show');
-                        $("#respuestaBuscador").html(result);
-//                    }
-//                    else {
-//                        //$("#addModal").modal('show');
-//                        $("#respuestaBuscador").html('<p style="color: red;">No se ha poddio guardar.</p>');
-//                    }
-                }
-            });
+            if(snippet == '') {
+                document.getElementById('respuestaBuscador').innerHTML = '';
+            }
+            else {
+                $.ajax({
+                    data: {
+                            //snippet: snippet
+                        },
+                    url: "http://localhost/SnippetApp/index.php/Snippets/GetSnippets/"+ snippet,
+                    type: "POST",
+                    success: function(result){
+                        //$("#respuesta").html(result);
+                        document.getElementById('respuestaBuscador').innerHTML = '';
+
+                        if(result.length > 0) {
+                            $('#respuestaBuscador').css( "visibility", "visible");
+                        }
+                        console.log(result);
+    //                    if(result == "1")
+    //                    {
+    //                        //$("#addModal").modal('show');
+                            for(var i = 0; i < result.length; i++) {
+                                $("#respuestaBuscador").append('<p><a href="http://localhost/SnippetApp/index.php/Snippets/SnippetById/'  + result[i].Id + '">' + result[i].Titulo + '</a></p>');
+                            }
+    //                    }
+    //                    else {
+    //                        //$("#addModal").modal('show');
+    //                        $("#respuestaBuscador").html('<p style="color: red;">No se ha poddio guardar.</p>');
+    //                    }
+                    }
+                });
+            }
+
         }
     </script>
