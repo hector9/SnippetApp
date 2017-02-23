@@ -13,7 +13,8 @@ class model_Codigo extends CI_Model {
             $datosCodigo = Array( 
                 'Valor' => $datos['Valor'],
                 'Descripcion' => $datos['Descripcion'],
-                'Id_Lenguaje' => $datos['Id_Lenguaje']);
+                'Id_Lenguaje' => $datos['Id_Lenguaje'],
+                'Titulo' => $datos['Titulo']);
             
             //var_dump($datosCodigo);
             $idCodigo = $this->AddCodigo($datosCodigo);
