@@ -99,7 +99,7 @@ class model_Codigo extends CI_Model {
     }
 
     public function GetCodigosByDescripcion($key) {
-        $query = $this->db->query("SELECT * FROM Codigo WHERE Descripcion LIKE %" . $key . "% ;");
+        $query = $this->db->query("SELECT * FROM Codigo WHERE Descripcion LIKE '%" . $key . "%' ;");
         return $query->result_array();
     }
 
