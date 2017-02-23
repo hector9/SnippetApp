@@ -62,7 +62,8 @@ class Snippets extends CI_Controller {
                 'Id_Lenguaje' => $_POST['lenguaje'],
                 'Valor' => $snippet,
                 'Descripcion' => $_POST['descripcion'],
-                'app' => $_POST['app']
+                'app' => $_POST['app'],
+                'Titulo' => $_POST['titulo']
             );
             
             if($this->snippetModel->NewCodigo($nuevoSnippet))
@@ -75,7 +76,7 @@ class Snippets extends CI_Controller {
                 
                 header('Content-Type: application/json');
                 
-                echo json_encode("true");
+                echo json_encode("1");
             }
             else
             {
@@ -116,7 +117,7 @@ class Snippets extends CI_Controller {
             $this->datos['appsCombo'] = $this->appModel->AppsCombo();
 
             $this->datos['snippets'] = $this->snippetModel->GetCodigoByLenguaje($idLng);
-            
+            var_dump($this->snippetModel->GetCodigosByDescripcion('p'));
             $this->load->view('common/header', $this->datos);
             $this->load->view('snippets/listasnippets', $this->datos);
             $this->load->view('common/footer');
@@ -133,5 +134,15 @@ class Snippets extends CI_Controller {
             $this->load->view('common/header', $this->datos);
             $this->load->view('snippets/listasnippets', $this->datos);
             $this->load->view('common/footer');
+        }
+        
+        public function GetSnippets($texto) {
+
+            header('Content-Type: application/json');
+                
+            $snippets = $this->snippetModel->GetCodigosByDescripcion($texto);
+            
+            echo json_encode($snippets);
+
         }
 }

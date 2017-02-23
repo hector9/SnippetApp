@@ -45,7 +45,7 @@
                   </div>
                   <div class="x_content">
                       <!-- action="<?= base_url() ?>index.php/Snippets/AddSnippet" method="post" -->
-                      <form class="form-horizontal form-label-left" id="formulario" >
+                      <form class="form-horizontal form-label-left" id="formulario">
                           
                       <div class="form-group">
                         <label class="control-label col-md-2 col-sm-2 col-xs-12">Lenguaje </label>
@@ -83,6 +83,13 @@
                       </div>
                           
                       <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Título </label>
+                        <div class="col-md-10 col-sm-10 col-xs-12">
+                            <input type="text" class="form-control" name="titulo" placeholder="Introduce un título...">
+                        </div>
+                      </div>
+                          
+                      <div class="form-group">
                         <label class="control-label col-md-2 col-sm-2 col-xs-12">Descripción </label>
                         <div class="col-md-10 col-sm-10 col-xs-12">
                             <input type="text" class="form-control" name="descripcion" placeholder="Introduce la descripción...">
@@ -99,19 +106,39 @@
 
                       
                       <div class="ln_solid"></div>
-                      <div class="form-group">
+<!--                      <div class="form-group">
                         <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                          <!--<button type="button" class="btn btn-primary">Cancel</button>-->
+                          <button type="button" class="btn btn-primary">Cancel</button>
                           <button type="reset" class="btn btn-primary">Reset</button>
-                         
                         </div>
-                      </div>
+                      </div>-->
 
                     </form>
-                       <button id="enviar" onclick="addSnippet();" class="btn btn-success">Submit</button>
-                      <div id="respuesta">
-                          
+                      <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-2">
+                          <button id="enviar" onclick="addSnippet();" class="btn btn-success">Submit</button>
                       </div>
+                      
+                      <button class="btn btn-success" data-toggle="modal" data-target="#addModal"><span class="glyphicon glyphicon-plus"></span>&nbsp;Add</button>
+                      
+                      <div id="addModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                              <h4 class="modal-title" id="gridSystemModalLabel">Info</h4>
+                            </div>
+
+                            <div class="modal-body">
+                                <div  id="respuesta">
+                                    
+                                </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                      <!--        <a href="http://localhost/Dissertation/iCuentas/index.php/Cuenta/AddAccount/1/2/3">Añadir</a>-->
+                            </div>
+                          </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                      </div><!-- /.modal -->
                   </div>
                 </div>
               </div>
@@ -157,8 +184,17 @@
                 type: "POST",
                 success: function(result){
                 //$("#respuesta").html(result);
-                console.log(result);
-                $("#respuesta").append(result);
+                    if(result == "1")
+                    {
+                        $("#addModal").modal('show');
+                        $("#respuesta").html('<p style="color: blue;">Se ha guardado correctamente.</p>');
+                    }
+                    else {
+                        $("#addModal").modal('show');
+                        $("#respuesta").html('<p style="color: red;">No se ha poddio guardar.</p>');
+                    }
+                    
+                    
                 }
             });
         }

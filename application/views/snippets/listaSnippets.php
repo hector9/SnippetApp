@@ -10,10 +10,13 @@
               <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                   <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
+                      <input type="text" id="buscador" onKeyUp="searchSnippets();" class="form-control" placeholder="Search for...">
                     <span class="input-group-btn">
                       <button class="btn btn-default" type="button">Go!</button>
                     </span>
+                    <div id="respuestaBuscador">
+                        
+                    </div>
                   </div>
                 </div>
               </div>
@@ -103,3 +106,32 @@
           </div>
         </div>
         <!-- /page content -->
+
+        <!-- Script para la respuesta Ajax del formulario de adición. -->
+    <script>
+        function searchSnippets(){
+            
+            var snippet = document.getElementById('buscador').value;
+            
+            $.ajax({
+                data: {
+                        //snippet: snippet
+                    },
+                url: "http://localhost/SnippetApp/index.php/Snippets/GetSnippets/"+ snippet,
+                type: "POST",
+                success: function(result){
+                    //$("#respuesta").html(result);
+                    console.log(result);
+//                    if(result == "1")
+//                    {
+//                        //$("#addModal").modal('show');
+                        $("#respuestaBuscador").html(result);
+//                    }
+//                    else {
+//                        //$("#addModal").modal('show');
+//                        $("#respuestaBuscador").html('<p style="color: red;">No se ha poddio guardar.</p>');
+//                    }
+                }
+            });
+        }
+    </script>
