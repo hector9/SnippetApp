@@ -60,7 +60,7 @@ class model_Codigo extends CI_Model {
         try
         {
             $query = $this->db->query("SELECT * FROM Codigo  WHERE Id = '" . $Id . "' ;");
-            return $query->row();
+            return $query->result_array();
         } 
         catch (Exception $ex) 
         {
