@@ -60,7 +60,7 @@ class model_Codigo extends CI_Model {
         try
         {
             $query = $this->db->query("SELECT * FROM Codigo  WHERE Id = '" . $Id . "' ;");
-            return $query->row();
+            return $query->result_array();
         } 
         catch (Exception $ex) 
         {
@@ -99,7 +99,7 @@ class model_Codigo extends CI_Model {
     }
 
     public function GetCodigosByDescripcion($key) {
-        $query = $this->db->query("SELECT * FROM Codigo WHERE Descripcion LIKE '%" . $key . "%' ;");
+        $query = $this->db->query("SELECT Id,Titulo FROM Codigo WHERE Descripcion LIKE '%" . $key . "%' ;");
         return $query->result_array();
     }
 
