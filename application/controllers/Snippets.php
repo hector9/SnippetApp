@@ -37,7 +37,9 @@ class Snippets extends CI_Controller {
             $this->datos['lenguajesCombo'] = $this->lenguajeModel->LenguajesCombo();
             $this->datos['appsCombo'] = $this->appModel->AppsCombo();
 
+            $this->load->view('common/header', $this->datos);
             $this->load->view('snippets/addSnippet', $this->datos);
+            $this->load->view('common/footer');
 	}
         
         public function AddSnippet()
@@ -65,14 +67,22 @@ class Snippets extends CI_Controller {
             
             if($this->snippetModel->NewCodigo($nuevoSnippet))
             {
-                echo 'Guardado Correctamente';
+                //echo 'Guardado Correctamente';
                 $this->datos['snippets'] = $this->snippetModel->GetCodigoByApp($_POST['app']);
-                $this->load->view('snippets/listaSnippets', $this->datos);
+//                $this->load->view('common/header', $this->datos);
+//                $this->load->view('snippets/listaSnippets', $this->datos);
+//                $this->load->view('common/footer');
+                
+                header('Content-Type: application/json');
+                
+                echo json_encode("true");
             }
             else
             {
                 echo 'Error al guardar';
+                $this->load->view('common/header', $this->datos);
                 $this->load->view('snippets/addSnippet', $this->datos);
+                $this->load->view('common/footer');
             }
 	}
         
@@ -82,7 +92,9 @@ class Snippets extends CI_Controller {
             $this->datos['lenguajesCombo'] = $this->lenguajeModel->LenguajesCombo();
             $this->datos['appsCombo'] = $this->appModel->AppsCombo();
             
+            $this->load->view('common/header', $this->datos);
             $this->load->view('snippets/addSnippet', $this->datos);
+            $this->load->view('common/footer');
         }
         
         public function DeleteSnippet($id) {
@@ -91,7 +103,9 @@ class Snippets extends CI_Controller {
             $this->datos['lenguajesCombo'] = $this->lenguajeModel->LenguajesCombo();
             $this->datos['appsCombo'] = $this->appModel->AppsCombo();
             
+            $this->load->view('common/header', $this->datos);
             $this->load->view('snippets/addSnippet', $this->datos);
+            $this->load->view('common/footer');
         }
         
         public function SnippetsByLng($idLng) {
@@ -103,7 +117,9 @@ class Snippets extends CI_Controller {
 
             $this->datos['snippets'] = $this->snippetModel->GetCodigoByLenguaje($idLng);
             
+            $this->load->view('common/header', $this->datos);
             $this->load->view('snippets/listasnippets', $this->datos);
+            $this->load->view('common/footer');
         }
         /**/
         public function SnippetsByApp($idApp) {
@@ -114,6 +130,8 @@ class Snippets extends CI_Controller {
 
             $this->datos['snippets'] = $this->snippetModel->GetCodigoByApp($idApp);
             
+            $this->load->view('common/header', $this->datos);
             $this->load->view('snippets/listasnippets', $this->datos);
+            $this->load->view('common/footer');
         }
 }
