@@ -57,7 +57,7 @@ border-radius: 5px;"></div>
                         {
                             echo '<div class="x_panel">
                   <div class="x_title">
-                    <h2><i class="fa fa-bars"></i> Snippet Título <small>Lenguaje</small></h2>
+                    <h2><i class="fa fa-cogs"></i> '. $snippet['Titulo'] .' <small>Lenguaje</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -80,9 +80,9 @@ border-radius: 5px;"></div>
 
                     <div class="" role="tabpanel" data-example-id="togglable-tabs">
                       <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-                        <li role="presentation" class="active"><a href="#tab_content'. $snippet['Id'] .'1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Code</a>
+                        <li role="presentation" class="active"><a href="#tab_content'. $snippet['Id'] .'1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"><i class="fa fa-code"></i> Code</a>
                         </li>
-                        <li role="presentation" class=""><a href="#tab_content'. $snippet['Id'] .'2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Description</a>
+                        <li role="presentation" class=""><a href="#tab_content'. $snippet['Id'] .'2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false"><i class="fa fa-ellipsis-h"></i> Description</a>
                         </li>
                       </ul>
                       <div id="myTabContent" class="tab-content">
@@ -120,6 +120,7 @@ border-radius: 5px;"></div>
             
             if(snippet == '') {
                 document.getElementById('respuestaBuscador').innerHTML = '';
+                $('#respuestaBuscador').css( "visibility", "hidden");
             }
             else {
                 $.ajax({
